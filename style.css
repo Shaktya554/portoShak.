@@ -1,0 +1,56 @@
+body { 
+    font-family: 'Plus Jakarta Sans', sans-serif; 
+}
+
+/* Custom Scrollbar untuk tema gelap */
+::-webkit-scrollbar { 
+    width: 6px; 
+}
+::-webkit-scrollbar-track { 
+    background: #0f172a; /* slate-900 */
+}
+::-webkit-scrollbar-thumb { 
+    background: #334155; /* slate-700 */
+    border-radius: 10px; 
+}
+::-webkit-scrollbar-thumb:hover { 
+    background: #475569; /* slate-600 */
+}
+
+/* Efek Glassmorphism untuk Tema Gelap (Dark Mode) */
+.glass-card-dark {
+    background: rgba(15, 23, 42, 0.4); /* slate-900 transparan */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Transisi Progress Bar untuk Keahlian */
+.skill-progress {
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Overlay Hitam Transparan saat Kursor Diarahkan ke Gambar Portofolio */
+.portfolio-overlay {
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.portfolio-card:hover .portfolio-overlay { 
+    opacity: 1; 
+}
+
+/* Animasi Kursor Berkedip (Warna Terang untuk Dark Mode) */
+.cursor {
+    display: inline-block;
+    width: 2px;
+    background-color: #94a3b8; /* slate-400 */
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink { 
+    50% { opacity: 0; } 
+}
