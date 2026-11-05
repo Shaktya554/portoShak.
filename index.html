@@ -24,10 +24,10 @@
 </head>
 <!-- Latar Belakang Biru Gradasi Gelap -->
 <body class="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-slate-300 antialiased selection:bg-blue-600 selection:text-white relative min-h-screen overflow-x-hidden">
-    <!-- Navigasi Transparan Blur (Z-index 999 agar tidak terhalang apapun) -->
-    <nav class="fixed w-full top-0 z-[999] bg-slate-950/30 backdrop-blur-xl border-b border-white/10 transition-all duration-300 shadow-sm shadow-black/20">
+   <!-- Navigasi Transparan Blur (Z-index SUPER TINGGI) -->
+    <nav class="fixed w-full top-0 z-[9999] bg-slate-950/30 backdrop-blur-xl border-b border-white/10 transition-all duration-300 shadow-sm shadow-black/20">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center relative">
-            <a href="#" class="font-bold text-lg tracking-tight text-white relative z-[999]">portoShak.<span class="text-blue-500">.</span></a>
+            <a href="#" class="font-bold text-lg tracking-tight text-white relative z-[9999]">portoShak<span class="text-blue-500">.</span></a>
             
             <!-- Menu Layar PC (Desktop) -->
             <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
@@ -39,21 +39,22 @@
                 <a href="#contact" class="px-5 py-2 bg-blue-600/80 backdrop-blur-md text-white text-xs font-semibold rounded-full hover:bg-blue-500 transition border border-blue-500/50">Hubungi Saya</a>
             </div>
 
-            <!-- Tombol Hamburger Layar HP (Mobile) - Area klik diperbesar (p-2) -->
-            <button id="mobile-menu-btn" class="md:hidden p-2 -mr-2 text-slate-300 hover:text-white focus:outline-none transition relative z-[999] cursor-pointer">
-                <i class="fa-solid fa-bars text-2xl"></i>
+            <!-- Tombol Hamburger Layar HP (Mobile) dengan fungsi ONCLICK langsung -->
+            <button onclick="toggleMobileMenu()" class="md:hidden p-4 -mr-4 text-slate-300 hover:text-white focus:outline-none relative z-[9999]">
+                <!-- pointer-events-none mencegah ikon menghalangi sentuhan jari -->
+                <i id="hamburger-icon" class="fa-solid fa-bars text-3xl pointer-events-none"></i>
             </button>
         </div>
 
         <!-- Dropdown Menu Mobile -->
-        <div id="mobile-menu" class="hidden flex-col bg-slate-900/95 backdrop-blur-xl border-t border-white/10 absolute w-full left-0 top-full shadow-2xl md:hidden">
-            <div class="flex flex-col p-6 gap-4 text-sm font-medium text-slate-300 relative z-[999]">
-                <a href="#about" class="mobile-link hover:text-white transition py-2">Tentang</a>
-                <a href="#services" class="mobile-link hover:text-white transition py-2">Layanan</a>
-                <a href="#skills" class="mobile-link hover:text-white transition py-2">Keahlian</a>
-                <a href="#experience" class="mobile-link hover:text-white transition py-2">Pengalaman</a>
-                <a href="#portfolio" class="mobile-link hover:text-white transition py-2">Karya</a>
-                <a href="#contact" class="mobile-link mt-2 text-center px-5 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition shadow-lg shadow-blue-500/30">Hubungi Saya</a>
+        <div id="mobile-menu" class="hidden flex-col bg-slate-900/95 backdrop-blur-xl border-t border-white/10 absolute w-full left-0 top-full shadow-2xl md:hidden z-[9999]">
+            <div class="flex flex-col p-6 gap-4 text-sm font-medium text-slate-300">
+                <a href="#about" onclick="toggleMobileMenu()" class="hover:text-white transition py-2">Tentang</a>
+                <a href="#services" onclick="toggleMobileMenu()" class="hover:text-white transition py-2">Layanan</a>
+                <a href="#skills" onclick="toggleMobileMenu()" class="hover:text-white transition py-2">Keahlian</a>
+                <a href="#experience" onclick="toggleMobileMenu()" class="hover:text-white transition py-2">Pengalaman</a>
+                <a href="#portfolio" onclick="toggleMobileMenu()" class="hover:text-white transition py-2">Karya</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="mt-2 text-center px-5 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition shadow-lg shadow-blue-500/30">Hubungi Saya</a>
             </div>
         </div>
     </nav>
@@ -682,43 +683,28 @@
     <!-- Memanggil Custom JS Lama -->
     <script src="script.js"></script>
 
-    <!-- SCRIPT KHUSUS NAVBAR MOBILE (Anti-Cache) -->
+   <!-- Fungsi JavaScript Paling Aman untuk Mobile Menu -->
     <script>
-        // Logika diletakkan langsung di HTML agar selalu terbaca oleh HP
-        const btnMenu = document.getElementById('mobile-menu-btn');
-        const menuMobile = document.getElementById('mobile-menu');
-        
-        if (btnMenu && menuMobile) {
-            btnMenu.addEventListener('click', function() {
-                const icon = this.querySelector('i');
-                
-                // Buka/Tutup Menu
-                menuMobile.classList.toggle('hidden');
-                menuMobile.classList.toggle('flex');
-                
-                // Ubah ikon Hamburger menjadi Silang (X)
-                if (icon.classList.contains('fa-bars')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-xmark');
-                } else {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                }
-            });
-
-            // Tutup menu otomatis jika menu link diklik
-            const linksMenu = document.querySelectorAll('.mobile-link');
-            linksMenu.forEach(link => {
-                link.addEventListener('click', () => {
-                    menuMobile.classList.add('hidden');
-                    menuMobile.classList.remove('flex');
-                    
-                    const icon = btnMenu.querySelector('i');
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                });
-            });
+        function toggleMobileMenu() {
+            var menu = document.getElementById('mobile-menu');
+            var icon = document.getElementById('hamburger-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                // Buka menu
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                // Tutup menu
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
         }
     </script>
+</body>
+</html>
 </body>
 </html>
