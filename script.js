@@ -64,11 +64,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // Memulai efek typewriter dengan delay 1 detik setelah halaman dimuat
     setTimeout(typeEffect, 1000);
 
-    // 4. Logika Mobile Menu (Hamburger Button)
+   // 4. Logika Mobile Menu (Hamburger Button)
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
-    const hamburgerIcon = mobileMenuBtn ? mobileMenuBtn.querySelector('i') : null;
 
     if (mobileMenuBtn && mobileMenu) {
         mobileMenuBtn.addEventListener('click', () => {
@@ -76,28 +75,24 @@ document.addEventListener("DOMContentLoaded", () => {
             mobileMenu.classList.toggle('hidden');
             mobileMenu.classList.toggle('flex');
             
-            // Ubah ikon dari garis tiga (bars) menjadi silang (xmark) jika ada
-            if (hamburgerIcon) {
-                if (hamburgerIcon.classList.contains('fa-bars')) {
-                    hamburgerIcon.classList.remove('fa-bars');
-                    hamburgerIcon.classList.add('fa-xmark');
-                } else {
-                    hamburgerIcon.classList.remove('fa-xmark');
-                    hamburgerIcon.classList.add('fa-bars');
-                }
+            // Toggle ikon garis tiga ke ikon X
+            const icon = mobileMenuBtn.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-xmark');
             }
         });
 
-        // Menutup menu secara otomatis jika salah satu link di dalam menu mobile diklik
+        // Menutup menu jika salah satu link diklik
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
                 
-                // Kembalikan ikon ke bentuk hamburger
-                if (hamburgerIcon) {
-                    hamburgerIcon.classList.remove('fa-xmark');
-                    hamburgerIcon.classList.add('fa-bars');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
                 }
             });
         });
