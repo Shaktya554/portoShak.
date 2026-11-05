@@ -27,7 +27,7 @@
     <!-- Navigasi Transparan Blur (Z-index 999 agar tidak terhalang apapun) -->
     <nav class="fixed w-full top-0 z-[999] bg-slate-950/30 backdrop-blur-xl border-b border-white/10 transition-all duration-300 shadow-sm shadow-black/20">
         <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center relative">
-            <a href="#" class="font-bold text-lg tracking-tight text-white relative z-[999]">Agung<span class="text-blue-500">.</span></a>
+            <a href="#" class="font-bold text-lg tracking-tight text-white relative z-[999]">portoShak.<span class="text-blue-500">.</span></a>
             
             <!-- Menu Layar PC (Desktop) -->
             <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
@@ -676,17 +676,49 @@
     <!-- AOS JS Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
-    <!-- Memanggil Custom JS -->
-    <script src="script.js"></script>
-    <!-- AOS JS Library -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
-    <!-- FsLightbox JS (Untuk fitur Album Foto / Lightbox) -->
+    <!-- FsLightbox JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.min.js"></script>
     
-    <!-- Memanggil Custom JS -->
+    <!-- Memanggil Custom JS Lama -->
     <script src="script.js"></script>
-</body>
-</html>
+
+    <!-- SCRIPT KHUSUS NAVBAR MOBILE (Anti-Cache) -->
+    <script>
+        // Logika diletakkan langsung di HTML agar selalu terbaca oleh HP
+        const btnMenu = document.getElementById('mobile-menu-btn');
+        const menuMobile = document.getElementById('mobile-menu');
+        
+        if (btnMenu && menuMobile) {
+            btnMenu.addEventListener('click', function() {
+                const icon = this.querySelector('i');
+                
+                // Buka/Tutup Menu
+                menuMobile.classList.toggle('hidden');
+                menuMobile.classList.toggle('flex');
+                
+                // Ubah ikon Hamburger menjadi Silang (X)
+                if (icon.classList.contains('fa-bars')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Tutup menu otomatis jika menu link diklik
+            const linksMenu = document.querySelectorAll('.mobile-link');
+            linksMenu.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuMobile.classList.add('hidden');
+                    menuMobile.classList.remove('flex');
+                    
+                    const icon = btnMenu.querySelector('i');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        }
+    </script>
 </body>
 </html>
