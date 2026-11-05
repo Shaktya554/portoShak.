@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shaktya Daffa Al Ghifari - Portfolio & CV</title>
+
+    <!-- Mengunci Viewport agar tidak bisa di-zoom (Bagus untuk tampilan mobile) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -23,24 +26,37 @@
 <!-- Latar Belakang Biru Gradasi Gelap -->
 <body class="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-slate-300 antialiased selection:bg-blue-600 selection:text-white relative min-h-screen">
 
-    <!-- Efek Cahaya Latar Belakang (Aura Biru) -->
-    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
-        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-blue-600/20 rounded-full filter blur-[120px]"></div>
-        <div class="absolute top-[20%] right-[-10%] w-[500px] h-[500px] bg-indigo-600/20 rounded-full filter blur-[120px]"></div>
-    </div>
-
     <!-- Navigasi Transparan Blur (Glassmorphism) -->
     <nav class="fixed w-full top-0 z-50 bg-slate-950/30 backdrop-blur-xl border-b border-white/10 transition-all duration-300 shadow-sm shadow-black/20">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="font-bold text-lg tracking-tight text-white">portoShak<span class="text-blue-500">.</span></a>
-            <div class="hidden md:flex gap-6 text-sm font-medium text-slate-300">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center relative">
+            <a href="#" class="font-bold text-lg tracking-tight text-white">Agung<span class="text-blue-500">.</span></a>
+            
+            <!-- Menu Layar PC (Desktop) -->
+            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
                 <a href="#about" class="hover:text-white transition">Tentang</a>
                 <a href="#services" class="hover:text-white transition">Layanan</a>
+                <a href="#skills" class="hover:text-white transition">Keahlian</a>
                 <a href="#experience" class="hover:text-white transition">Pengalaman</a>
-                <a href="#certificates" class="hover:text-white transition">Lisensi</a>
                 <a href="#portfolio" class="hover:text-white transition">Karya</a>
+                <a href="#contact" class="px-5 py-2 bg-blue-600/80 backdrop-blur-md text-white text-xs font-semibold rounded-full hover:bg-blue-500 transition border border-blue-500/50">Hubungi Saya</a>
             </div>
-            <a href="#contact" class="px-5 py-2 bg-blue-600/80 backdrop-blur-md text-white text-xs font-semibold rounded-full hover:bg-blue-500 transition border border-blue-500/50">Hubungi Saya</a>
+
+            <!-- Tombol Hamburger Layar HP (Mobile) -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none transition">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Dropdown Menu Mobile (Tersembunyi secara default) -->
+        <div id="mobile-menu" class="hidden flex-col bg-slate-900/95 backdrop-blur-xl border-t border-white/10 absolute w-full left-0 top-full shadow-2xl md:hidden">
+            <div class="flex flex-col p-6 gap-4 text-sm font-medium text-slate-300">
+                <a href="#about" class="mobile-link hover:text-white transition">Tentang</a>
+                <a href="#services" class="mobile-link hover:text-white transition">Layanan</a>
+                <a href="#skills" class="mobile-link hover:text-white transition">Keahlian</a>
+                <a href="#experience" class="mobile-link hover:text-white transition">Pengalaman</a>
+                <a href="#portfolio" class="mobile-link hover:text-white transition">Karya</a>
+                <a href="#contact" class="mobile-link mt-2 text-center px-5 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition shadow-lg shadow-blue-500/30">Hubungi Saya</a>
+            </div>
         </div>
     </nav>
 

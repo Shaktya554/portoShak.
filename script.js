@@ -63,4 +63,43 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Memulai efek typewriter dengan delay 1 detik setelah halaman dimuat
     setTimeout(typeEffect, 1000);
+
+    // 4. Logika Mobile Menu (Hamburger Button)
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    const hamburgerIcon = mobileMenuBtn ? mobileMenuBtn.querySelector('i') : null;
+
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', () => {
+            // Toggle menu (buka/tutup)
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+            
+            // Ubah ikon dari garis tiga (bars) menjadi silang (xmark) jika ada
+            if (hamburgerIcon) {
+                if (hamburgerIcon.classList.contains('fa-bars')) {
+                    hamburgerIcon.classList.remove('fa-bars');
+                    hamburgerIcon.classList.add('fa-xmark');
+                } else {
+                    hamburgerIcon.classList.remove('fa-xmark');
+                    hamburgerIcon.classList.add('fa-bars');
+                }
+            }
+        });
+
+        // Menutup menu secara otomatis jika salah satu link di dalam menu mobile diklik
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+                
+                // Kembalikan ikon ke bentuk hamburger
+                if (hamburgerIcon) {
+                    hamburgerIcon.classList.remove('fa-xmark');
+                    hamburgerIcon.classList.add('fa-bars');
+                }
+            });
+        });
+    }
 });
