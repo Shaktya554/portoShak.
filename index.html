@@ -25,74 +25,94 @@
 <!-- Latar Belakang Biru Gradasi Gelap -->
 <body class="bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 text-slate-300 antialiased selection:bg-blue-600 selection:text-white relative min-h-screen overflow-x-hidden">
    <!-- Navigasi Transparan Blur (Z-index SUPER TINGGI) -->
-    <nav class="fixed w-full top-0 z-[9999] bg-slate-950/30 backdrop-blur-xl border-b border-white/10 transition-all duration-300 shadow-sm shadow-black/20">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center relative">
-            <a href="#" class="font-bold text-lg tracking-tight text-white relative z-[9999]">portoShak<span class="text-blue-500">.</span></a>
+    <!-- SECTION: MODERN FLOATING PILL NAVBAR -->
+    <nav class="fixed top-5 left-1/2 -translate-x-1/2 z-[9999] w-[90%] max-w-3xl bg-slate-900/70 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl px-6 py-3 transition-all duration-300">
+        <div class="flex justify-between items-center relative">
+            <!-- Logo -->
+            <a href="#" class="font-bold text-base tracking-tight text-white">portoShak.<span class="text-blue-500">.</span></a>
             
             <!-- Menu Layar PC (Desktop) -->
-            <div class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+            <div class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300">
                 <a href="#about" class="hover:text-white transition">Tentang</a>
-                <a href="#services" class="hover:text-white transition">Layanan</a>
+                <a href="#services" class="hover:text-white transition">Alur Kerja</a>
                 <a href="#skills" class="hover:text-white transition">Keahlian</a>
                 <a href="#experience" class="hover:text-white transition">Pengalaman</a>
+                <a href="#certificates" class="hover:text-white transition">Sertifikat</a>
                 <a href="#portfolio" class="hover:text-white transition">Karya</a>
-                <a href="#contact" class="px-5 py-2 bg-blue-600/80 backdrop-blur-md text-white text-xs font-semibold rounded-full hover:bg-blue-500 transition border border-blue-500/50">Hubungi Saya</a>
             </div>
 
-            <!-- Tombol Hamburger Layar HP (Mobile) dengan fungsi ONCLICK langsung -->
-            <button onclick="toggleMobileMenu()" class="md:hidden p-4 -mr-4 text-slate-300 hover:text-white focus:outline-none relative z-[9999]">
-                <!-- pointer-events-none mencegah ikon menghalangi sentuhan jari -->
-                <i id="hamburger-icon" class="fa-solid fa-bars text-3xl pointer-events-none"></i>
-            </button>
+            <!-- Tombol Aksi / Hamburger HP -->
+            <div class="flex items-center gap-3">
+                <a href="#contact" class="hidden md:inline-block px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-full hover:bg-blue-500 transition shadow-md shadow-blue-500/20">Kontak</a>
+                
+                <!-- Tombol Hamburger Mobile -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-300 hover:text-white focus:outline-none p-1 cursor-pointer">
+                    <i id="hamburger-icon" class="fa-solid fa-bars text-xl pointer-events-none"></i>
+                </button>
+            </div>
         </div>
 
-        <!-- Dropdown Menu Mobile -->
-        <div id="mobile-menu" class="hidden flex-col bg-slate-900/95 backdrop-blur-xl border-t border-white/10 absolute w-full left-0 top-full shadow-2xl md:hidden z-[9999]">
-            <div class="flex flex-col p-6 gap-4 text-sm font-medium text-slate-300">
-                <a href="#about" onclick="toggleMobileMenu()" class="hover:text-white transition py-2">Tentang</a>
-                <a href="#services" onclick="toggleMobileMenu()" class="hover:text-white transition py-2">Layanan</a>
-                <a href="#skills" onclick="toggleMobileMenu()" class="hover:text-white transition py-2">Keahlian</a>
-                <a href="#experience" onclick="toggleMobileMenu()" class="hover:text-white transition py-2">Pengalaman</a>
-                <a href="#portfolio" onclick="toggleMobileMenu()" class="hover:text-white transition py-2">Karya</a>
-                <a href="#contact" onclick="toggleMobileMenu()" class="mt-2 text-center px-5 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition shadow-lg shadow-blue-500/30">Hubungi Saya</a>
+        <!-- Dropdown Menu Mobile (Mengambang rapi di bawah navbar) -->
+        <div id="mobile-menu" class="hidden flex-col bg-slate-900/95 backdrop-blur-2xl border border-white/10 rounded-2xl absolute w-[94%] left-[3%] top-[calc(100%+12px)] shadow-2xl p-5 md:hidden">
+            <div class="flex flex-col gap-3 text-sm font-medium text-slate-300">
+                <a href="#about" onclick="toggleMobileMenu()" class="hover:text-white transition py-1.5 border-b border-white/5">Tentang</a>
+                <a href="#workflow" onclick="toggleMobileMenu()" class="hover:text-white transition py-1.5 border-b border-white/5">Alur Kerja</a>
+                <a href="#skills" onclick="toggleMobileMenu()" class="hover:text-white transition py-1.5 border-b border-white/5">Keahlian</a>
+                <a href="#experience" onclick="toggleMobileMenu()" class="hover:text-white transition py-1.5 border-b border-white/5">Pengalaman</a>
+                <a href="#certificates" onclick="toggleMobileMenu()" class="hover:text-white transition py-1.5 border-b border-white/5">Sertifikat</a>
+                <a href="#portfolio" onclick="toggleMobileMenu()" class="hover:text-white transition py-1.5 border-b border-white/5">Karya</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="mt-2 text-center px-4 py-2.5 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition shadow-lg shadow-blue-500/30 text-xs font-semibold">Hubungi Saya</a>
             </div>
         </div>
     </nav>
+    
     <main class="max-w-5xl mx-auto px-6 py-24 md:py-32">
 
-        <!-- SECTION 1: CV CARD (Hero) -->
-        <section class="glass-card-dark rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-10 mb-24" data-aos="fade-up">
-            <div class="relative group">
-                <div class="w-40 h-40 md:w-52 md:h-52 rounded-full overflow-hidden border-4 border-slate-700 shadow-2xl relative z-10">
-                    <img src="img/Foto Profil.jpeg" alt="Profile" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+       <!-- SECTION: HERO / PEMBUKA -->
+        <section id="about" class="pt-36 pb-20 px-6 max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                
+                <!-- Kiri: Teks Perkenalan -->
+                <div data-aos="fade-right">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold mb-6">
+                        <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                        Frontend Dev & UI/UX Designer
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight">
+                        Hi, Saya <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500">Shaktya Daffa Al Ghifari</span>
+                    </h1>
+                    
+                    <p class="text-slate-400 text-base leading-relaxed mb-8">
+                        Mahasiswa Informatika Universitas Ma'soem sekaligus pengembang web dan desainer yang berfokus pada pembuatan antarmuka digital yang bersih, responsif, dan berpusat pada pengalaman pengguna (*User Experience*).
+                    </p>
+                    
+                    <!-- Tombol Aksi -->
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="#portfolio" class="px-6 py-3 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-500 transition shadow-lg shadow-blue-500/25">
+                            Lihat Karya <i class="fa-solid fa-arrow-down ml-2 text-xs"></i>
+                        </a>
+                        <a href="#contact" class="px-6 py-3 bg-slate-900 text-slate-300 border border-white/10 text-sm font-semibold rounded-full hover:bg-slate-800 hover:text-white transition">
+                            Hubungi Saya
+                        </a>
+                    </div>
                 </div>
-                <div class="absolute inset-0 bg-blue-500 rounded-full scale-105 opacity-20 group-hover:scale-110 group-hover:opacity-40 transition duration-500 blur-md"></div>
-            </div>
 
-            <div class="text-center md:text-left flex-1">
-                <div class="inline-block px-4 py-1.5 bg-blue-500/10 text-blue-400 text-xs font-bold tracking-wider uppercase rounded-full mb-4 border border-blue-500/20">
-                    Tersedia Untuk Proyek / Freelance
+                <!-- Kanan: Foto Profil / Ilustrasi Card -->
+                <div class="relative flex justify-center" data-aos="fade-left">
+                    <div class="w-72 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden border border-white/10 bg-slate-900 shadow-2xl relative group">
+                        <!-- Ganti src dengan foto profil asli Anda jika ada (misal: img/profile.jpg) -->
+                        <img src="img/Foto Profil.jpeg" alt="Agung Setiawan" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <p class="text-white font-bold text-sm">Shaktya Daffa Al Ghifari</p>
+                            <p class="text-slate-400 text-xs">Ma'soem University</p>
+                        </div>
+                    </div>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-2">Shaktya Daffa Al Ghifari</h1>
-                
-                <div class="text-xl md:text-2xl text-slate-400 font-medium h-8 mb-4">
-                    Saya seorang <span id="typewriter" class="text-blue-400 font-bold"></span><span class="cursor">&nbsp;</span>
-                </div>
-                
-                <p class="text-slate-400 leading-relaxed mb-8 max-w-xl">
-                    Mahasiswa Informatika yang memiliki minat besar pada penggabungan logika kode dengan estetika visual. Berfokus merancang dan membangun pengalaman digital yang intuitif, modern, dan berfungsi sempurna.
-                </p>
-                
-                <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                    <a href="#portfolio" class="px-7 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-500 transition shadow-lg shadow-blue-600/30 hover:-translate-y-1 transform duration-300">
-                        Lihat Karya
-                    </a>
-                    <a href="file/CV-Shaktya Daffa Al Ghifari.pdf" class="px-7 py-3 bg-slate-800 text-white font-semibold rounded-xl border border-slate-700 hover:bg-slate-700 transition flex items-center gap-2">
-                        <i class="fas fa-download"></i> Unduh CV
-                    </a>
-                </div>
+
             </div>
-        </section>
+        </section>  
 
         <!-- SECTION 2: ABOUT & SKILLS -->
         <section id="about" class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24 pt-10">
@@ -188,6 +208,61 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <!-- SECTION: PENDEKATAN KERJA (WORKFLOW) -->
+        <section id="services" class="mb-24 pt-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-white mb-4">Pendekatan Kerja</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto">Alur terstruktur yang saya terapkan untuk memastikan setiap proyek digital dirancang secara fungsional, estetis, dan solutif.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Tahap 1: Riset & Wireframing -->
+                <div class="bg-slate-900/50 p-6 rounded-3xl border border-white/5 hover:border-blue-500/30 transition duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl font-bold mb-6 border border-blue-500/20">
+                        01
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Riset & Wireframing</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Memetakan kebutuhan pengguna, merancang alur informasi (*user flow*), dan menyusun kerangka dasar (*low-fidelity*) di Figma.
+                    </p>
+                </div>
+
+                <!-- Tahap 2: Desain Visual (UI) -->
+                <div class="bg-slate-900/50 p-6 rounded-3xl border border-white/5 hover:border-purple-500/30 transition duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl font-bold mb-6 border border-purple-500/20">
+                        02
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Desain Visual (UI)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Mengembangkan konsep visual berestetika tinggi dengan prinsip tipografi yang kuat, tata letak bersih, dan komponen *design system*.
+                    </p>
+                </div>
+
+                <!-- Tahap 3: Pengembangan Kode -->
+                <div class="bg-slate-900/50 p-6 rounded-3xl border border-white/5 hover:border-emerald-500/30 transition duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl font-bold mb-6 border border-emerald-500/20">
+                        03
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Pengembangan Kode</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Menerjemahkan desain ke dalam kode responsif menggunakan Tailwind CSS, HTML/JS, serta mengintegrasikan sistem backend berbasis Laravel & MySQL.
+                    </p>
+                </div>
+
+                <!-- Tahap 4: Evaluasi & Perilisan -->
+                <div class="bg-slate-900/50 p-6 rounded-3xl border border-white/5 hover:border-orange-500/30 transition duration-300 flex flex-col h-full" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-400 flex items-center justify-center text-xl font-bold mb-6 border border-orange-500/20">
+                        04
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Evaluasi & Perilisan</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Menguji responsivitas di berbagai perangkat, memastikan performa optimal, dan melakukan *deployment* langsung ke platform produksi.
+                    </p>
+                </div>
+
             </div>
         </section>
      <!-- SECTION: HARD SKILLS & SOFT SKILLS -->
@@ -570,7 +645,7 @@
 
             </div>
         </section>
-       <!-- SECTION: KARYA PILIHAN (PORTFOLIO) -->
+      <!-- SECTION: KARYA PILIHAN (PORTFOLIO) -->
         <section id="portfolio" class="mb-24 pt-10">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-white mb-4">Karya Pilihan</h2>
@@ -588,54 +663,49 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     
-                    <!-- Card UI/UX 1: Helpdesk Frontend (Beserta Album Fotonya) -->
-                    <!-- Tag <a> utama yang tampil di layar -->
-                    <a href="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" data-fslightbox="album-helpdesk" class="portfolio-card relative rounded-2xl overflow-hidden shadow-xl bg-slate-800 border border-white/5 group cursor-pointer h-72 block" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
+                    <!-- Card 1: Helpdesk -->
+                    <a href="project1.html" class="portfolio-card relative rounded-2xl overflow-hidden shadow-xl bg-slate-800 border border-white/5 group cursor-pointer h-72 block" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
                         <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-6">
                             <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-500">
                                 <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Web Dev & UI</span>
                                 <h3 class="text-lg font-bold text-white mt-3 mb-2">Helpdesk & Ticketing System</h3>
                                 <p class="text-slate-300 text-xs opacity-0 group-hover:opacity-100 transition duration-500 delay-100">
-                                    Desain UI dan implementasi frontend dashboard admin beserta form tiket. Klik untuk melihat album.
+                                    Baca selengkapnya tentang proses perancangan dan pengembangan sistem ini.
                                 </p>
                             </div>
                         </div>
                     </a>
-                    <!-- Gambar Tambahan Tersembunyi (Hidden) untuk Album Helpdesk -->
-                    <!-- Ganti href dengan URL gambar form tiket, dashboard, dll milik Anda -->
-                    <a href="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" data-fslightbox="album-helpdesk" class="hidden"></a>
-                    <a href="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?q=80&w=1200&auto=format&fit=crop" data-fslightbox="album-helpdesk" class="hidden"></a>
 
-                    <!-- Card UI/UX 2: Figma Prototype -->
-                    <a href="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=1200&auto=format&fit=crop" data-fslightbox="album-dashboard" class="portfolio-card relative rounded-2xl overflow-hidden shadow-xl bg-slate-800 border border-white/5 group cursor-pointer h-72 block" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
+                    <!-- Card 2: Dashboard Prototype -->
+                    <a href="project2.html" class="portfolio-card relative rounded-2xl overflow-hidden shadow-xl bg-slate-800 border border-white/5 group cursor-pointer h-72 block" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
                         <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-6">
                             <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-500">
                                 <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Prototyping</span>
                                 <h3 class="text-lg font-bold text-white mt-3 mb-2">Dashboard Admin Prototype</h3>
                                 <p class="text-slate-300 text-xs opacity-0 group-hover:opacity-100 transition duration-500 delay-100">
-                                    Eksplorasi desain dashboard interaktif menggunakan Figma.
+                                    Eksplorasi desain panel admin interaktif dengan komponen Figma.
                                 </p>
                             </div>
                         </div>
                     </a>
 
-                    <!-- Card UI/UX 3: Mobile App UI -->
-                    <a href="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1200&auto=format&fit=crop" data-fslightbox="album-mobile" class="portfolio-card relative rounded-2xl overflow-hidden shadow-xl bg-slate-800 border border-white/5 group cursor-pointer h-72 flex items-center justify-center block" data-aos="fade-up" data-aos-delay="300">
-                        <!-- Menambahkan gambar latar agar saat di klik muncul -->
-                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-30 group-hover:opacity-50 absolute inset-0">
+                    <!-- Card 3: Mobile UI -->
+                    <a href="project3.html" class="portfolio-card relative rounded-2xl overflow-hidden shadow-xl bg-slate-800 border border-white/5 group cursor-pointer h-72 block flex items-center justify-center" data-aos="fade-up" data-aos-delay="300">
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-30 group-hover:opacity-50 absolute inset-0">
                         <i class="fa-solid fa-mobile-screen-button text-6xl text-white/80 group-hover:scale-110 transition duration-500 relative z-10"></i>
                         <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-6 z-20">
                             <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-500">
                                 <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Mobile UI</span>
                                 <h3 class="text-lg font-bold text-white mt-3 mb-2">Eksplorasi App UI</h3>
                                 <p class="text-slate-300 text-xs opacity-0 group-hover:opacity-100 transition duration-500 delay-100">
-                                    Prototipe untuk aplikasi mobile.
+                                    Lihat detail perancangan antarmuka pengguna berbasis mobile.
                                 </p>
                             </div>
                         </div>
                     </a>
+
                 </div>
             </div>
 
@@ -649,33 +719,35 @@
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <!-- Card Graphic 1: Jersey Dnd's -->
-                    <a href="https://images.unsplash.com/photo-1580087433295-ab2600c1030e?q=80&w=1200&auto=format&fit=crop" data-fslightbox="album-jersey" class="portfolio-card relative rounded-2xl overflow-hidden shadow-xl bg-slate-800 border border-white/5 group cursor-pointer h-72 md:h-80 block" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://images.unsplash.com/photo-1580087433295-ab2600c1030e?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
+                    
+                    <!-- Card 4: Jersey Dnd's -->
+                    <a href="project4.html" class="portfolio-card relative rounded-2xl overflow-hidden shadow-xl bg-slate-800 border border-white/5 group cursor-pointer h-72 md:h-80 block" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://images.unsplash.com/photo-1580087433295-ab2600c1030e?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
                         <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-6">
                             <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-500">
                                 <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Apparel Design</span>
                                 <h3 class="text-xl font-bold text-white mt-3 mb-2">Desain Konsep Jersey "Dnd's"</h3>
                                 <p class="text-slate-300 text-xs opacity-0 group-hover:opacity-100 transition duration-500 delay-100">
-                                    Desain apparel kustom untuk olahraga.
+                                    Proses perancangan visual dan penempatan identitas merek pada pakaian olahraga.
                                 </p>
                             </div>
                         </div>
                     </a>
 
-                    <!-- Card Graphic 2: Branding -->
-                    <a href="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1200&auto=format&fit=crop" data-fslightbox="album-branding" class="portfolio-card relative rounded-2xl overflow-hidden shadow-xl bg-slate-800 border border-white/5 group cursor-pointer h-72 md:h-80 block" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
+                    <!-- Card 5: Branding -->
+                    <a href="project5.html" class="portfolio-card relative rounded-2xl overflow-hidden shadow-xl bg-slate-800 border border-white/5 group cursor-pointer h-72 md:h-80 block" data-aos="fade-up" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=800" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100">
                         <div class="portfolio-overlay absolute inset-0 flex flex-col justify-end p-6">
                             <div class="transform translate-y-4 group-hover:translate-y-0 transition duration-500">
                                 <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Brand Identity</span>
                                 <h3 class="text-xl font-bold text-white mt-3 mb-2">Eksplorasi Identitas Merek</h3>
                                 <p class="text-slate-300 text-xs opacity-0 group-hover:opacity-100 transition duration-500 delay-100">
-                                    Pembuatan elemen identitas visual yang bersih dan minimalis.
+                                    Penerapan konsistensi visual pada logo, tipografi, dan media cetak.
                                 </p>
                             </div>
                         </div>
                     </a>
+
                 </div>
             </div>
         </section>
